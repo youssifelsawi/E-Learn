@@ -1,7 +1,7 @@
 // pages/Community.js
 import React from 'react';
 import PostCard from '../components/PostCard';
-import DiscussionSidebar from '../components/DiscussionSidebar';
+import DiscussionSideBar from '../components/DiscussionSideBar';
 
 export default function Community({ state, dispatch }) {
   const posts = [
@@ -44,7 +44,7 @@ export default function Community({ state, dispatch }) {
             <PostCard key={post.id} post={post} />
           ))}
         </div>
-        <DiscussionSidebar />
+        <DiscussionSideBar />
       </div>
     </div>
   );
