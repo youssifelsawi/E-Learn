@@ -1,7 +1,7 @@
 // pages/Lesson.js
 import React from 'react';
 import VideoPlayer from '../components/VideoPlayer';
-import LessonSidebar from '../components/LessonSidebar';
+import LessonSideBar from '../components/LessonSideBar';
 
 export default function Lesson({ state, dispatch }) {
   const currentCourse = state.courses[0]; // demo: first course
@@ -10,7 +10,7 @@ export default function Lesson({ state, dispatch }) {
   return (
     <div className="flex h-screen">
       <VideoPlayer lesson={currentLesson} />
-      <LessonSidebar
+      <LessonSideBar
         course={currentCourse}
         dispatch={dispatch}
         currentLesson={currentLesson}
