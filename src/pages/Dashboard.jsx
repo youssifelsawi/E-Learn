@@ -10,6 +10,7 @@ import {
 import StatsCard from '../components/StatsCard';
 import ContinueLearning from '../components/ContinueLearning';
 import RecentAchievements from '../components/RecentAchievements';
+import HeroSection from '../components/HeroSection';
 
 export default function Dashboard({ state, dispatch }) {
   const statsData = [
@@ -41,6 +42,7 @@ export default function Dashboard({ state, dispatch }) {
 
   return (
     <div className="p-6 space-y-6">
+      <HeroSection />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsData.map((stat, index) => (
           <StatsCard key={index} {...stat} />

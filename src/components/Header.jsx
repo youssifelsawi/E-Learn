@@ -1,9 +1,26 @@
 import React, { useState, useMemo, forwardRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, Heart } from "lucide-react";
 
 const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
   const [isFocused, setIsFocused] = useState(false);
+  const location = useLocation();
+
+   const pageTitles = {
+    "/": "Dashboard",
+    "/courses": "Courses",
+    "/my-learning": "My Learning",
+    "/lesson": "Lesson",
+    "/certificates": "Certificates",
+    "/community": "Community",
+    "/profile": "Profile",
+    "/settings": "Settings",
+    "/edit-profile": "Edit Profile",
+    "/profile-updated": "Profile Updated",
+    "/wishlist": "Wishlist",
+  };
+
+const currentTitle = pageTitles[location.pathname] || "Page";
 
   // Filtered courses based on search query
   const filteredCourses = useMemo(() => {
@@ -20,12 +37,13 @@ const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
         <div className="flex items-center">
           <button
             onClick={() => dispatch({ type: "TOGGLE_SIDEBAR" })}
-            className="lg:hidden mr-4"
+            className="mr-4 cursor-pointer"
           >
             <Menu className="h-6 w-6" />
           </button>
+
           <h2 className="text-xl font-semibold capitalize">
-            {state.currentPage.replace("-", " ")}
+            {currentTitle}
           </h2>
         </div>
 
@@ -52,7 +70,7 @@ const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
                 {filteredCourses.map((course) => (
                   <Link
                     key={course.id}
-                    to={`/courses/${course.id}`}
+                    to={`/lesson?courseId=${course.id}`}
                     className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100"
                   >
                     <img
@@ -77,7 +95,7 @@ const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
           </div>
 
           {/* Wishlist Icon (ref here!) */}
-          <Link to="/wishlist" id="wishlist-icon" className="relative">
+          <Link to="/wishlist" id="wishlist-icon" className="relative" ref={wishlistRef}>
             <Heart className="h-6 w-6 text-gray-600 hover:text-red-500" />
             {state.wishlist.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">

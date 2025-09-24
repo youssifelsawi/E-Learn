@@ -1,6 +1,7 @@
 // components/LessonSidebar.js
 import React from "react";
 import { CheckCircle, Circle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function LessonSidebar({ course, dispatch, currentLesson }) {
   return (
@@ -43,16 +44,18 @@ export default function LessonSidebar({ course, dispatch, currentLesson }) {
 
       <div className="p-4 border-t">
         <button
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mb-2"
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mb-2 cursor-pointer"
           onClick={() =>
             dispatch({ type: "TOGGLE_LESSON_COMPLETION", payload: currentLesson.id })
           }
         >
           {currentLesson?.completed ? "Mark as Incomplete" : "Mark as Complete"}
         </button>
-        <button className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200">
+        <Link to='/resources'>
+        <button className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 cursor-pointer">
           Download Resources
         </button>
+        </Link>
       </div>
     </div>
   );

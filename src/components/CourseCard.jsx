@@ -105,26 +105,30 @@ export default function CourseCard({ course = {}, dispatch = () => {}, state = {
           <span>{course.students} students</span>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-gray-900">${course.price}</span>
-          {course.enrolled ? (
-            <Link
-              to="/lesson"
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
-            >
-              Continue
-            </Link>
-          ) : (
-            <button
-              onClick={() =>
-                dispatch({ type: "ENROLL_COURSE", payload: course.id })
-              }
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-            >
-              Enroll Now
-            </button>
-          )}
-        </div>
+<div className="flex items-center justify-between">
+  <span className="text-2xl font-bold text-gray-900">
+    ${course.price}
+  </span>
+
+  {course.enrolled ? (
+    <Link
+      to={`/lesson?courseId=${course.id}&lessonId=${course.lastLessonId}`}
+      className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+    >
+      Continue
+    </Link>
+  ) : (
+    <button
+      onClick={() =>
+        dispatch({ type: "ENROLL_COURSE", payload: course.id })
+      }
+      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+    >
+      Enroll Now
+    </button>
+  )}
+</div>
+
       </div>
     </motion.div>
   );

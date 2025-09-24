@@ -1,5 +1,5 @@
 // App.js
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/SideBar";
 import Header from "./components/Header";
@@ -15,9 +15,32 @@ import EditProfile from "./pages/EditProfile";
 import ProfileUpdated from "./pages/ProfileUpdated";
 import WishlistPage from "./pages/WishlistPage";
 import { appReducer, initialState } from "./store/reducer";
+import "./App.css";
+import DownloadResources from "./pages/DownloadResources";
+import { ArrowUp } from "lucide-react";
 
 export default function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
+
+  // State for showing the button
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <Router>
@@ -35,7 +58,7 @@ export default function App() {
           }`}
         >
           <Header state={state} dispatch={dispatch} />
-          <main className="min-h-screen p-4">
+          <main className="min-h-screen p-4 relative">
             <Routes>
               <Route
                 path="/"
@@ -83,7 +106,21 @@ export default function App() {
                 path="/wishlist"
                 element={<WishlistPage state={state} dispatch={dispatch} />}
               />
+              <Route
+                path="/resources"
+                element={<DownloadResources state={state} dispatch={dispatch} />}
+              />
             </Routes>
+
+            {/* Scroll to Top Button */}
+            {showScroll && (
+              <button
+                onClick={scrollToTop}
+                className="fixed bottom-6 right-6 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+              >
+                <ArrowUp className="h-5 w-5" />
+              </button>
+            )}
           </main>
         </div>
 
