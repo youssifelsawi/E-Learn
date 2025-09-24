@@ -55,18 +55,18 @@ export default function Sidebar({ state, dispatch }) {
     <div
       ref={sidebarRef}
       className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform 
-    ${state.sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-    transition-transform duration-300 ease-in-out`}
+      ${state.sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+      transition-transform duration-300 ease-in-out`}
     >
       <div className="flex items-center justify-center h-16 px-6 bg-white relative">
         {/* Logo */}
         <div className="w-24 h-24 mt-6 flex items-center justify-center">
-          <Link to='/'>
-          <img
-            src={`${import.meta.env.BASE_URL}assets/e-learn.png`}
-            alt="E-learn Logo"
-            className="max-w-full max-h-full"
-          />
+          <Link to="/">
+            <img
+              src="/e-learn.png"
+              alt="E-learn Logo"
+              className="max-w-full max-h-full"
+            />
           </Link>
         </div>
 
