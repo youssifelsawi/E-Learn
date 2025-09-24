@@ -63,7 +63,7 @@ export default function Sidebar({ state, dispatch }) {
         <div className="w-24 h-24 mt-6 flex items-center justify-center">
           <Link to='/'>
           <img
-            src="../../public/assets/e-learn.png"
+            src={`${import.meta.env.BASE_URL}assets/e-learn.png`}
             alt="E-learn Logo"
             className="max-w-full max-h-full"
           />
