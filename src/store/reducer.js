@@ -4,7 +4,7 @@ export const initialState = {
   user: {
     name: "Youssif Elsawi",
     email: "Youssif.elsawi@example.com",
-    avatar: "../../public/assets/icon1.jpg",
+    avatar: "icon1.jpg",
     completedCourses: 12,
     currentCourses: 3,
     certificates: 8,
@@ -15,7 +15,7 @@ export const initialState = {
     {
       id: 1,
       author: 'John Smith',
-      avatar: '../../public/assets/icon2.jpeg',
+      avatar: 'icon2.jpeg',
       time: '2 hours ago',
       content: 'Just completed the React Hooks section! The explanation of useEffect was particularly helpful. Anyone else working through this course?',
       likes: 12,
@@ -24,7 +24,7 @@ export const initialState = {
     {
       id: 2,
       author: 'Emily Johnson',
-      avatar: '../../public/assets/icon3.avif',
+      avatar: 'icon3.avif',
       time: '5 hours ago',
       content: 'Looking for study partners for the JavaScript advanced course. Anyone interested in forming a study group?',
       likes: 8,
@@ -33,7 +33,7 @@ export const initialState = {
     {
       id: 3,
       author: 'Mike Chen',
-      avatar: '../../public/assets/icon4.jpeg',
+      avatar: 'icon4.jpeg',
       time: '1 day ago',
       content: 'Great explanation on async/await in the latest lesson. The practical examples really helped me understand the concept better.',
       likes: 15,

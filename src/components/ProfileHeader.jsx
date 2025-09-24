@@ -9,7 +9,7 @@ export default function ProfileHeader({ user }) {
       <div className="flex items-start space-x-6">
         <div className="relative">
           <img
-            src={user.avatar}
+            src={`${import.meta.env.BASE_URL}assets/${user.avatar}`}
             alt={user.name}
             className="w-24 h-24 rounded-full"
           />

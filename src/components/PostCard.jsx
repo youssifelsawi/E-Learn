@@ -6,7 +6,7 @@ export default function PostCard({ post }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
       <div className="flex items-start space-x-4">
-        <img src={post.avatar} alt="User" className="w-10 h-10 rounded-full" />
+        <img src={`${import.meta.env.BASE_URL}assets/${post.avatar}`} alt="User" className="w-10 h-10 rounded-full" />
         <div className="flex-1">
           <div className="flex items-center space-x-2 mb-2">
             <h3 className="font-semibold">{post.author}</h3>

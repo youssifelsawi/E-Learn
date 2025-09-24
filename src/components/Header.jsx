@@ -108,7 +108,7 @@ const currentTitle = pageTitles[location.pathname] || "Page";
           <Link to="/profile">
             <div className="flex items-center space-x-2">
               <img
-                src={state.user.avatar}
+                src={`${import.meta.env.BASE_URL}assets/${state.user.avatar}`}
                 alt={state.user.name}
                 className="h-8 w-8 rounded-full"
               />
