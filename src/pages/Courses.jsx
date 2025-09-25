@@ -4,7 +4,7 @@ import CourseCard from '../components/CourseCard';
 import CourseFilters from '../components/CourseFilters';
 
 export default function Courses({ state, dispatch }) {
-  const categories = ['all', 'programming', 'design', 'data science', 'business'];
+  const categories = ['all', 'programming', 'design', 'data science', 'business', 'AI & Machine Learning', 'Software Development'];
   
   const filteredCourses = state.courses.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
