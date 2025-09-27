@@ -1,4 +1,4 @@
-import React, { useState, useMemo, forwardRef } from "react";
+import React, { useState, useMemo, forwardRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, Heart } from "lucide-react";
 
@@ -67,6 +67,11 @@ const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
     return null;
   };
 
+     // Empty the search bar when navigating to a new page
+  useEffect(() => {
+    dispatch({ type: "SET_SEARCH_QUERY", payload: "" });
+  }, [location.pathname, location.search, dispatch]);
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
@@ -96,7 +101,7 @@ const Header = forwardRef(({ state, dispatch }, wishlistRef) => {
               }
               onFocus={() => setIsFocused(true)}
               onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-              className="pl-9 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-40 md:w-64"
+              className="pl-9 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-40 md:w-64   "
             />
             <SearchDropdown />
           </div>
